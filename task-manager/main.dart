@@ -5,7 +5,9 @@ import 'io/ioManager.dart';
 void main() {
   TaskManager taskManager = TaskManager();
   print("=============== Welcome to Task Manager ===============");
-  while (true) {
+
+  bool running = true;
+  while (running) {
     print("""
             What do you want to do? \n
             A) Add a task \n
@@ -18,22 +20,28 @@ void main() {
     String? input = stdin.readLineSync();
     input = input!.toUpperCase();
 
-    if (input == "A") {
-      addTask(taskManager);
-    } else if (input == "B") {
-      viewTask(taskManager);
-    } else if (input == "C") {
-      editTask(taskManager);
-    } else if (input == "D") {
-      completeTask(taskManager);
-    } else if (input == "E") {
-      removeTask(taskManager);
-    } else if (input == "F") {
-      print("Bye!");
-      break;
-    } else {
-      print("Invalid input");
+    switch (input) {
+      case "A":
+        addTask(taskManager);
+        break;
+      case "B":
+        viewTask(taskManager);
+        break;
+      case "C":
+        editTask(taskManager);
+        break;
+      case "D":
+        completeTask(taskManager);
+        break;
+      case "E":
+        removeTask(taskManager);
+        break;
+      case "F":
+        print("Bye!");
+        running = false;
+      default:
+        print("Invalid input");
     }
-    print("====================================");
+    print("=====================================================");
   }
 }

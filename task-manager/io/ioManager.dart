@@ -41,7 +41,7 @@ void viewTask(TaskManager taskManager) {
   if (view == "A") {
     List<Task> allTasks = taskManager.viewTasks();
     for (int i = 0; i < allTasks.length; i++) {
-      print("Task ${i + 1}");
+      print("Task id - ${i + 1}");
       printTask(allTasks[i]);
     }
     print(">>>>>> You have viewed all tasks");
@@ -49,14 +49,14 @@ void viewTask(TaskManager taskManager) {
     List<Task> completedTasks = taskManager.viewCompletedTasks();
 
     for (int i = 0; i < completedTasks.length; i++) {
-      print("Task ${i + 1}");
+      print("Task id - ${i + 1}");
       printTask(completedTasks[i]);
     }
     print(">>>>>> You have viewed completed tasks");
   } else if (view == "C") {
     List<Task> pendingTasks = taskManager.viewPendingTasks();
     for (int i = 0; i < pendingTasks.length; i++) {
-      print("Task ${i + 1}");
+      print("Task id - ${i + 1}");
       printTask(pendingTasks[i]);
     }
     print(">>>>>> You have viewed pending tasks");
