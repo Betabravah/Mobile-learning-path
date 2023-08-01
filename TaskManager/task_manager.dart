@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'task.dart';
 
 class TaskManager {
@@ -34,9 +32,10 @@ class TaskManager {
     return pendingTasks;
   }
 
-  Task? editTask(int taskid, [String? title, String? description, DateTime? date, String? status]) {
-    if (taskid < tasks.length) {
-      Task task = tasks[taskid - 1];
+    Task? editTask(int? taskId, {String? title, String? description, DateTime? date}) {
+    if (taskId != null && taskId <= tasks.length) {
+      Task task = tasks[taskId - 1];
+
       if (title != null) {
         task.title = title;
       }
@@ -46,16 +45,23 @@ class TaskManager {
       if (date != null) {
         task.date = date;
       }
-      if (status != null) {
-        task.status = status;
-      }
+      
+      return task;
+    }
+    return null;
+  }
+
+  Task? completeTask(int taskid) {
+    if (taskid <= tasks.length) {
+      Task task = tasks[taskid - 1];
+      task.status = "completed";
       return task;
     }
     return null;
   }
 
   Task? removeTask(int taskid) {
-    if (taskid < tasks.length) {
+    if (taskid <= tasks.length) {
       Task task = tasks.removeAt(taskid - 1);
       return task;
     }
