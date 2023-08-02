@@ -39,6 +39,7 @@ void main() {
       case "F":
         print("Bye!");
         running = false;
+        break;
       default:
         print("Invalid input");
     }

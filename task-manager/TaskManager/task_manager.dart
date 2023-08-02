@@ -1,7 +1,6 @@
 import 'task.dart';
 
 class TaskManager {
-  
   List<Task> tasks = [];
 
   void addTask(Task task) {
@@ -13,28 +12,17 @@ class TaskManager {
   }
 
   List<Task> viewCompletedTasks() {
-    List<Task> completedTasks = [];
-    for (int i = 0; i < tasks.length; i++) {
-      if (tasks[i].status == "completed") {
-        completedTasks.add(tasks[i]);
-      }
-    }
-    return completedTasks;
+   return tasks.where((task) => task.status == 'completed').toList();
   }
 
-  List<Task> viewPendingTasks() {
-    List<Task> pendingTasks = [];
-    for (int i = 0; i < tasks.length; i++) {
-      if (tasks[i].status == "pending") {
-        pendingTasks.add(tasks[i]);
-      }
-    }
-    return pendingTasks;
+   List<Task> viewPendingTasks() {
+   return tasks.where((task) => task.status == 'pending').toList();
   }
-
-    Task? editTask(int? taskId, {String? title, String? description, DateTime? date}) {
-    if (taskId != null && taskId <= tasks.length) {
-      Task task = tasks[taskId - 1];
+  
+  Task? editTask(int? taskId,
+      {String? title, String? description, DateTime? date}) {
+    if (taskId != null && taskId >= 0 && taskId < tasks.length) {
+      Task task = tasks[taskId];
 
       if (title != null) {
         task.title = title;
@@ -45,15 +33,15 @@ class TaskManager {
       if (date != null) {
         task.date = date;
       }
-      
+
       return task;
     }
     return null;
   }
 
   Task? completeTask(int taskid) {
-    if (taskid <= tasks.length) {
-      Task task = tasks[taskid - 1];
+    if (taskid < tasks.length) {
+      Task task = tasks[taskid];
       task.status = "completed";
       return task;
     }
@@ -61,11 +49,10 @@ class TaskManager {
   }
 
   Task? removeTask(int taskid) {
-    if (taskid <= tasks.length) {
-      Task task = tasks.removeAt(taskid - 1);
+    if (taskid < tasks.length) {
+      Task task = tasks.removeAt(taskid);
       return task;
     }
     return null;
   }
 }
-
