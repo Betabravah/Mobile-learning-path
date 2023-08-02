@@ -8,6 +8,13 @@ class TaskManager {
     tasks.add(task);
   }
 
+  Task? getTaskById(int id) {
+    if (id <= tasks.length) {
+      return tasks[id - 1];
+    }
+    return null;
+  }
+
   List<Task> viewTasks() {
     return tasks;
   }

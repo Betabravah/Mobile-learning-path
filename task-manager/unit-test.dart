@@ -30,5 +30,16 @@ void main() {
       expect(pendingTasks[1].title, equals('Task 3'));
       expect(pendingTasks[2].title, equals('Task 5'));
     });
+
+    test('getTaskById returns the correct task', () {
+      Task? task = taskManager.getTaskById(2);
+      expect(task?.title, equals('Task 2'));
+      expect(task?.description, equals('Description 2'));
+    });
+
+    test('getTaskById returns null for invalid ID', () {
+      Task? task = taskManager.getTaskById(10);
+      expect(task, equals(null));
+    });
   });
 }
