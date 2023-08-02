@@ -13,22 +13,21 @@ class TaskManager {
   }
 
   List<Task> viewCompletedTasks() {
-    List<Task> completedTasks = [];
-    for (int i = 0; i < tasks.length; i++) {
-      if (tasks[i].status == "completed") {
-        completedTasks.add(tasks[i]);
-      }
+  List<Task> completedTasks = [];
+  tasks.forEach((element) {
+    if (element.status == "completed") {
+      completedTasks.add(element);
     }
-    return completedTasks;
-  }
+  });
+  return completedTasks;
+}
 
   List<Task> viewPendingTasks() {
     List<Task> pendingTasks = [];
-    for (int i = 0; i < tasks.length; i++) {
-      if (tasks[i].status == "pending") {
-        pendingTasks.add(tasks[i]);
-      }
-    }
+    tasks.forEach((element) { 
+      if (element.status == "pending") {
+        pendingTasks.add(element);
+      }});
     return pendingTasks;
   }
 
