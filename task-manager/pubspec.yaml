@@ -1,0 +1,9 @@
+name: TaskManager
+description: A simple commandline taskmanager app written in Dart.
+version: 1.0.0
+
+dependencies:
+  test: ^1.16.5
+
+environment:
+  sdk: '^3.0.0'
